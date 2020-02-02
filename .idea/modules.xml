@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/../PycharnProjects/.idea/PycharnProjects.iml" filepath="$PROJECT_DIR$/../PycharnProjects/.idea/PycharnProjects.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/PythonJSDET.iml" filepath="$PROJECT_DIR$/.idea/PythonJSDET.iml" />
       <module fileurl="file://$PROJECT_DIR$/..//PythonSDET/../../PythonJieKou/.idea/PythonJSDET.iml" filepath="$PROJECT_DIR$/..//PythonSDET/../../PythonJieKou/.idea/PythonJSDET.iml" />
     </modules>
   </component>
