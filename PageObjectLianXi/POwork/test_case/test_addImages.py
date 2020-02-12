@@ -6,7 +6,7 @@ class TestAddImages:
 		self.add_images = ManagementTool()
 
 	def test_add_images(self):
-		print(os.path.dirname(os.getcwd()))
+		# 返回到上一层级的路径
 		path =os.path.abspath(os.path.dirname(os.getcwd())) + r"\upload_image.jpg"
 		self.add_images.add_images(path)
 
