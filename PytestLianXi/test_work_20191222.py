@@ -38,4 +38,4 @@ def test_div_negative(number5, number6, expectation2):
 	assert div(number5, number6) == expectation2
 
 if __name__ == "__main__":
-	pytest.main(["-q", "test_homework_20191222.py"])
+	pytest.main(["-q", "test_work_20191222.py"])
