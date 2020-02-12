@@ -34,7 +34,5 @@ class AddressBook(BasePage):
 		self._driver.find_element(By.NAME, "mobile").clear()
 		self._driver.find_element(By.NAME, "mobile").send_keys(mobile)
 		self._driver.find_element(By.CSS_SELECTOR, " div:nth-child(3) > a.ww_btn_Blue").click()
-		# 同样目前只能通过死等来判断是否修改成功
-		time.sleep(2)
 		editor_result = self._driver.find_element(By.CSS_SELECTOR, ".member_display_item_Phone").text
 		assert mobile in editor_result
