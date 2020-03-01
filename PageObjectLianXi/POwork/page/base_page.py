@@ -1,7 +1,7 @@
 import time
 
 from selenium import webdriver
-from selenium.webdriver.firefox.webdriver import WebDriver
+from selenium.webdriver.remote.webdriver import WebDriver
 
 class BasePage:
 	def __init__(self, driver:WebDriver=None):
