@@ -1,4 +1,6 @@
 from appium.webdriver.common.mobileby import MobileBy
+from selenium.webdriver.common.by import By
+
 from po_appium.page.base_page import BasePage
 
 class Search(BasePage):
@@ -12,3 +14,14 @@ class Search(BasePage):
 
 	def get_prices(self, key: str) -> float:
 		return  float(self.find(MobileBy.ID, "current_price").text)
+
+	def add_select(self):
+		element = self.find_by_text("加自选")
+		element.click()
+		return self
+	def get_msg(self):
+		return self.find_and_get_text(By.ID, "followed_btn")
+
+	"""点击返回按钮，返回行情界面"""
+	def back_stocks(self):
+		return self.find(By.ID, "action_close").click()

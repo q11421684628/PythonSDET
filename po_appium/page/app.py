@@ -1,4 +1,8 @@
+import datetime
+
 from appium import webdriver
+from selenium.webdriver.support.wait import WebDriverWait
+
 from po_appium.page.base_page import BasePage
 from po_appium.page.main import Main
 
@@ -13,7 +17,7 @@ class App(BasePage):
 				"deviceName": "OPPO-A57",
 				"appPackage": self._package,
 				"appActivity": self._activity,
-				"noReset": True,
+				# "noReset": True,
 				# "reseKeyboard": True,
 				# "unicodeKeyboard": True,
 				# "skipServerInstallation": True,
@@ -22,7 +26,7 @@ class App(BasePage):
 				# "udid":"emulator-5554"
 			}
 			self._driver = webdriver.Remote("http://127.0.0.1:4723/wd/hub", webviews)
-			self._driver.implicitly_wait(10)
+			self._driver.implicitly_wait(5)
 		else:
 			self._driver.start_activity(self._package, self._activity)
 			#done:kill app start app
@@ -36,4 +40,13 @@ class App(BasePage):
 
 	def main(self) -> Main:
 		#todo:wait main page
+		def wait_load(driver):
+			datetime.datetime.now()
+			source = self._driver.page_source
+			if "我的" in source:
+				return True
+			if "同意" in source:
+				return True
+			return False
+		WebDriverWait(self._driver, 30).until(wait_load)
 		return Main(self._driver)
