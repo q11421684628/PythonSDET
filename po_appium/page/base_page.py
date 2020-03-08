@@ -1,3 +1,5 @@
+import yaml
+from appium.webdriver import WebElement
 from appium.webdriver.webdriver import WebDriver
 from selenium.webdriver.common.by import By
 
@@ -14,6 +16,8 @@ class BasePage:
     ]
     _error_min = 0
     _error_max = 3
+
+    _params = {}
 
     _driver: WebDriver
 
@@ -81,3 +85,30 @@ class BasePage:
 
     def find_by_text(self, key):
         return self.find(self.text(key))
+
+    def steps(self, path):
+        with open(path) as f:
+            steps: list[dict] = yaml.safe_load(f)
+            element: WebElement = None
+            for step in steps:
+                self.log.info(step)
+                if "by" in step.keys():
+                    element = self.find(step["by"], step["locator"])
+                if "action" in step.keys():
+                    action = step["action"]
+                    if action == "find":
+                        pass
+                    elif action == "click":
+                        element.click()
+                    elif action == "text":
+                        element.text
+                    elif action == "attribute":
+                        element.get_attribute(step["value"])
+                    elif action in ["send", "input"]:
+                        # 将yaml文件里的value赋值给content变量
+                        content: str = step["value"]
+                        # 循环遍历params字典里的数据，如果带有{}字样的话就将paras的value值批量替换
+                        print("目前字典里的值为：{%s}" % self._params.keys())
+                        for key in self._params.keys():
+                            content = content.replace("{%s}" % key, self._params[key])
+                        element.send_keys(content)

@@ -14,9 +14,10 @@ class App(BasePage):
 		if self._driver is None:
 			webviews = {
 				"platformName": "android",
-				"deviceName": "OPPO-A57",
+				"deviceName": "appium-test",
 				"appPackage": self._package,
 				"appActivity": self._activity,
+				"newCommandTimeout": 600,
 				# "noReset": True,
 				# "reseKeyboard": True,
 				# "unicodeKeyboard": True,
