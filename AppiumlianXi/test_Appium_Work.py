@@ -11,7 +11,7 @@ class TestAppiumWork:
     def setup(self):
         caps = {}
         caps["platformName"] = "android"  # 移动端类型，Android、IOS
-        caps["deviceName"] = "appium-test"  # 设备名，可随意填写
+        caps["deviceName"] = "appium-test"  # 设备名
         caps["appPackage"] = "com.xueqiu.android"  # app包名
         # app入口 win系统可使用 adb shell "logcat | grep -i displayed"查看
         caps["appActivity"] = ".view.WelcomeActivityAlias"

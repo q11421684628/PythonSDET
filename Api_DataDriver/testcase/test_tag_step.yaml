@@ -1,14 +1,16 @@
 # 推荐，调用方法的时候就直接传get或者post请求即可，无须携带参数
 test_delete:
   - {method: tag.get}
-  - {extract: "$..tag[?(@.name=='{name}", name: x}
-  - {method: tag.delete, conditions: xx}
+  - {path: "$..tag[?(@.name==${name}", extract: before}
+#  - {method: tag.delete, conditions: xx}
+#  - {method: tag.get}
+#  - {extract: path1, name: size_before}
+  - {method: tag.add, name: "${name}"}
   - {method: tag.get}
-  - {extract: path1, name: size_before}
-  - {method: tag.add}
-  - {method: tag.get}
-  - {extract: path3, name: size_after}
-  - {assersion: size_after==size_before}
+  - {path: "$..tag[?(@.name==${name}", extract: after}
+#  - {assertion: len(after)>=len(before)+1}
+  - {assertion: [1, eq, 1]}
+  - {assertion: "len([1,2]) > len([1])"}
 
 # 不推荐，调用方法的时候每次都要复制参数过来
 test_delete2:

@@ -2,7 +2,10 @@ import json
 
 import requests
 
-class WeWork:
+from Api_DataDriver.api.base_api import BaseApi
+
+
+class WeWork(BaseApi):
 	token_url = "https://qyapi.weixin.qq.com/cgi-bin/gettoken"
 	corpid = "wwb360c29f30344ea2"
 	token = dict()
@@ -25,7 +28,3 @@ class WeWork:
 			cls.token_url,
 			params={"corpid": cls.corpid, "corpsecret": secret})
 		return r.json()
-	
-	@classmethod
-	def format(cls, data):
-		print(json.dumps(data.json(), indent=2))

@@ -108,7 +108,6 @@ class BasePage:
                         # 将yaml文件里的value赋值给content变量
                         content: str = step["value"]
                         # 循环遍历params字典里的数据，如果带有{}字样的话就将paras的value值批量替换
-                        print("目前字典里的值为：{%s}" % self._params.keys())
                         for key in self._params.keys():
                             content = content.replace("{%s}" % key, self._params[key])
                         element.send_keys(content)

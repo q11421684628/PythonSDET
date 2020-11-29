@@ -18,7 +18,7 @@ class TestXueqiu:
     def setup(self):
         caps = {}
         caps["platformName"] = "android"  # 移动端类型，Android、IOS
-        caps["deviceName"] = "appium-test"  # 设备名，可随意填写
+        caps["deviceName"] = "192.168.185.102:5555"  # 设备名，可随意填写
         caps["appPackage"] = "com.xueqiu.android"  # app包名
         # app入口 win系统可使用 adb shell "logcat | grep -i displayed"查看
         caps["appActivity"] = ".view.WelcomeActivityAlias"
@@ -64,7 +64,7 @@ class TestXueqiu:
         while True:
             try:
                 self.driver.find_element(
-                    MobileBy.XPATH, "//*[@text='2小时前' and contains(@resource-id, 'created_at')]").click()
+                    MobileBy.XPATH, "//*[@text='1小时前' and contains(@resource-id, 'created_at')]").click()
                 break
             except Exception:
                 self.driver.swipe(width / 2, height * 0.8, width / 2, height * 0.2)
